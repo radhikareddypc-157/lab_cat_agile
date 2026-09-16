@@ -1,5 +1,5 @@
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk
 WORKDIR /app
-COPY . /app
-RUN javac GreatestOfThree.java TestGreatest.java
-CMD ["java", "GreatestOfThree"]
+COPY *.java ./
+COPY *.class ./
+CMD ["java", "TestGreatest"]
