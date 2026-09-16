@@ -13,14 +13,14 @@ pipeline {
         }
         stage('Create Docker Image') {
             steps {
-                bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" build -t greatest-java-app .'
+                bat '"C:\\Users\\HP\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t greatest-java-app .'
             }
         }
         stage('Start and Stop Container') {
             steps {
-                bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" run --name my-java-container greatest-java-app'
-                bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" ps -a'
-                bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" rm -f my-java-container'
+                bat '"C:\\Users\\HP\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" run --name my-java-container greatest-java-app'
+                bat '"C:\\Users\\HP\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" ps -a'
+                bat '"C:\\Users\\HP\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" rm -f my-java-container'
             }
         }
     }
