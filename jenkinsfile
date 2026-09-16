@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone from GitHub') {
+            steps {
+                git branch: 'main', url: 'https://github.com/radhikareddypc-157/lab_cat_agile.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'javac GreatestOfThree.java TestGreatest.java'
+            }
+        }
+        stage('Test') {
+            steps {
+                bat 'java TestGreatest'
+            }
+        }
+        stage('Create Docker Image') {
+            steps {
+                bat 'docker build -t greatest-java-app .'
+            }
+        }
+        stage('Start and Stop Container') {
+            steps {
+                bat 'docker run --name my-java-container greatest-java-app'
+                bat 'docker stop my-java-container || echo Container already stopped'
+                bat 'docker rm my-java-container || echo Container already removed'
+            }
+        }
+    }
+}
